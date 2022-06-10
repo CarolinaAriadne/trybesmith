@@ -4,12 +4,14 @@ import joi from 'joi';
 const validateAmountErr400 = joi.object({
   amount: joi.string().required().messages({
     'any.required': '"amount" is required',
+    
   }),
 });
 
 const validateAmountErr22 = joi.object({
   amount: joi.string().min(3).messages({
     'string.min': '"amount" length must be at least 3 characters long',
+    'any.required': '"amount" must be a string', 
   }),
 });
 

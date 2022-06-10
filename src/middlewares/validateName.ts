@@ -14,6 +14,8 @@ const validateNameErr22 = joi.object({
     .min(3)
     .messages({
       'string.min': '"name" length must be at least 3 characters long',
+      'any.required': '"name" must be a string', 
+      
     }),
 });
 
@@ -21,7 +23,7 @@ export const verifyNameErr400 = (req: Request, res: Response, next: NextFunction
   const { name } = req.body;
 
   const { error } = validateNameErr400.validate({ name });
-  console.log(error, 'error');
+  console.log(error?.details[0].type, 'error');
   if (error) return res.status(400).json({ message: error.message });
 
   next();
