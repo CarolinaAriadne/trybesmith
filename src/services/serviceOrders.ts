@@ -18,14 +18,14 @@ export default class OrdersService {
     
     const getProductsId = await Promise.all(
       orders.map(async (order) => {
-        const productsFromOrderId = await this.products.getProductsById(order.id);
-        const idProducts = productsFromOrderId.map((product) => product.id);
-        const result = {
+        const orderProducts = await this.products.getProductsById(order.id);
+        const idFromProducts = orderProducts.map((product) => product.id);
+        const value = {
           id: order.id,
           userId: order.userId,
-          productsIds: idProducts,
+          productsIds: idFromProducts,
         };
-        return result;
+        return value;
       }),
 
     );
