@@ -27,7 +27,7 @@ export const verifyUserNameErr400 = (req: Request, res: Response, next: NextFunc
   next();
 };
   
-export const verifyNameErr422 = (req: Request, res: Response, next: NextFunction) => {
+export const verifyUserNameErr422 = (req: Request, res: Response, next: NextFunction) => {
   const { username } = req.body;
   const { error } = validateUserNameErr22.validate({ username });
   

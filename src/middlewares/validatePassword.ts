@@ -11,7 +11,7 @@ const validatePasswordErr400 = joi.object({
   
 const validatePasswordErr22 = joi.object({
   password: joi.string()
-    .min(9)
+    .min(8)
     .messages({
       'number.min': '"password" length must be at least 8 characters long',
       'any.required': '"password" must be a number', 
