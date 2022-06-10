@@ -1,6 +1,7 @@
 import express from 'express';
 
 import ProductsController from '../controllers/controllerProducts';
+import OrdersController from '../controllers/controllerOrders';
 
 import { verifyNameErr400, verifyNameErr422 } from '../middlewares/validateName';
 import { verifyAmountErr400, verifyAmountErr422 } from '../middlewares/validateAmount';
@@ -14,8 +15,8 @@ const router = express.Router();
 
 const productsController = new ProductsController();
 const usersController = new UsersController();
+const ordersController = new OrdersController();
 
-// Produtos
 router.post(
   '/users',
   verifyUserNameErr422,
@@ -40,5 +41,7 @@ router.post(
   verifyAmountErr400,
   productsController.createProductController,
 );
+
+router.get('/orders', ordersController.getAllOrdersController);
 
 export default router;
